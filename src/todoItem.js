@@ -7,7 +7,7 @@ import Card from "@mui/material/Card";
 
 const TodoCard = styled(Card)({
   padding: "1rem",
-  backgroundColor: "rgba(255, 255, 255, 0.15)",
+  backgroundColor: "rgba(255, 255, 255, 0.6)",
   color: "darkslategray",
   height: "calc(100% - 2rem)",
   display: "flex",
@@ -29,7 +29,7 @@ export const TodoItem = ({ task, setAsDone, setAsTodo, removeTask }) => (
     <ButtonGroup variant="outlined">
       {!task.done ? (
         <Button variant="outlined" onClick={() => setAsDone(task.id)}>
-          ✓ done
+          ✓ Terminé
         </Button>
       ) : (
         <Button
