@@ -7,7 +7,7 @@ export const useTasks = () => {
 
   const fetchTasks = useCallback(async () => {
     try {
-      const response = await fetch("http://localhost:5000/tasks/");
+      const response = await fetch("http://localhost:5000/tasks");
       const data = await response.json();
       setTasks(data.filter(({ title }) => Boolean(title)));
     } catch (error) {

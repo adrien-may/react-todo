@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 
 import Card from "@mui/material/Card";
+import { Check } from "@mui/icons-material";
 
 const TodoCard = styled(Card)({
   padding: "1rem",
@@ -13,8 +14,9 @@ const TodoCard = styled(Card)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
+  boxShadow: "0 8px 8px #0002",
   "&:hover": {
-    boxShadow: "0 8px 8px #0002",
+    boxShadow: "0 2px 2px #0002",
   },
 });
 
@@ -28,14 +30,20 @@ export const TodoItem = ({ task, setAsDone, setAsTodo, removeTask }) => (
     </Typography>
     <ButtonGroup variant="outlined">
       {!task.done ? (
-        <Button variant="outlined" onClick={() => setAsDone(task.id)}>
-          ✓ Terminé
+        <Button
+          startIcon={<Check />}
+          variant="outlined"
+          onClick={() => setAsDone(task.id)}
+          size="small"
+        >
+          Terminé
         </Button>
       ) : (
         <Button
           variant="outlined"
           color="warning"
           onClick={() => setAsTodo(task.id)}
+          size="small"
         >
           Rouvrir
         </Button>
@@ -44,6 +52,7 @@ export const TodoItem = ({ task, setAsDone, setAsTodo, removeTask }) => (
         variant="outlined"
         color="error"
         onClick={() => removeTask(task.id)}
+        size="small"
       >
         🗑️
       </Button>

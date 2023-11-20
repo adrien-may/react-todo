@@ -4,9 +4,7 @@ body {
 }
 
 .app {
-  background-color: lightblue;
-  background-image: radial-gradient(at 47% 33%, rgb(247, 243, 204) 0, transparent 59%),
-  radial-gradient(at 82% 65%, teal 0, transparent 55%);
+  background-color: #eefefe;
   margin: 0;
   padding: 0;
   height: 100%;

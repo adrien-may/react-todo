@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 
 import { TodoItem } from "./todoItem";
 import { TaskCreationModal } from "./todoModal";
+import { Add, FilterAlt } from "@mui/icons-material";
 
 export const Todos = () => {
   const {
@@ -38,14 +39,19 @@ export const Todos = () => {
         aria-label="outlined primary button group"
         sx={{ marginBottom: "1rem" }}
       >
-        <Button onClick={() => setVisible(true)}>➕ Créer</Button>
+        <Button startIcon={<Add />} onClick={() => setVisible(true)}>
+          Créer
+        </Button>
         <TaskCreationModal
           visible={visible}
           setVisible={setVisible}
           createTask={createTask}
           creationCallback={creationCallback}
         />
-        <Button onClick={() => setQuickFilter(!quickFilter)}>
+        <Button
+          startIcon={<FilterAlt />}
+          onClick={() => setQuickFilter(!quickFilter)}
+        >
           {quickFilter ? "Tout afficher" : "A faire"}
         </Button>
       </ButtonGroup>
