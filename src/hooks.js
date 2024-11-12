@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState, useMemo } from "react";
 
+const URL = "http://localhost:5000/tasks";
+
 export const useTasks = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -7,7 +9,7 @@ export const useTasks = () => {
 
   const fetchTasks = useCallback(async () => {
     try {
-      const response = await fetch("http://localhost:5000/tasks");
+      const response = await fetch(URL);
       const data = await response.json();
       setTasks(data.filter(({ title }) => Boolean(title)));
     } catch (error) {
@@ -27,7 +29,7 @@ export const useTasks = () => {
 export const useTaskActions = () => {
   const markAsDone = useCallback(async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+      const response = await fetch(`${URL}/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +45,7 @@ export const useTaskActions = () => {
 
   const markAsTodo = useCallback(async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+      const response = await fetch(`${URL}/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +61,7 @@ export const useTaskActions = () => {
 
   const deleteTask = useCallback(async (id) => {
     try {
-      await fetch(`http://localhost:5000/tasks/${id}`, {
+      await fetch(`${URL}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +73,7 @@ export const useTaskActions = () => {
   }, []);
 
   const createTask = useCallback(async (title) => {
-    const response = await fetch(`http://localhost:5000/tasks/`, {
+    const response = await fetch(`${URL}/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
