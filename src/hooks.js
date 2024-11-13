@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useMemo } from "react";
 
-const URL = "http://localhost:5000/tasks";
+const URL = "http://localhost:5000/tasks/";
 
 export const useTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -29,7 +29,7 @@ export const useTasks = () => {
 export const useTaskActions = () => {
   const markAsDone = useCallback(async (id) => {
     try {
-      const response = await fetch(`${URL}/${id}`, {
+      const response = await fetch(`${URL}${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export const useTaskActions = () => {
 
   const markAsTodo = useCallback(async (id) => {
     try {
-      const response = await fetch(`${URL}/${id}`, {
+      const response = await fetch(`${URL}${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export const useTaskActions = () => {
   }, []);
 
   const createTask = useCallback(async (title) => {
-    const response = await fetch(`${URL}/`, {
+    const response = await fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
