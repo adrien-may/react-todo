@@ -61,7 +61,7 @@ export const useTaskActions = () => {
 
   const deleteTask = useCallback(async (id) => {
     try {
-      await fetch(`${URL}/${id}`, {
+      await fetch(`${URL}${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
