@@ -1,5 +1,4 @@
-import React from "react";
-import { TodoItem } from "../todoItem";
+import { TodoItem } from "../todoItem.jsx";
 
 export default {
   title: "todo",
